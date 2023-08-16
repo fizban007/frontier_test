@@ -1,0 +1,10 @@
+project(frontier_test LANGUAGES CXX HIP)
+set(LINKER_LANGUAGE HIP)
+set(CMAKE_HIP_FLAGS "-fgpu-rdc")
+# set(CMAKE_EXE_LINKER_FLAGS "--hip-link")
+
+add_library(libtest "lib.hip.cpp")
+set_source_files_properties("lib.hip.cpp" PROPERTIES LANGUAGE HIP)
+add_executable(frontier_test "main.hip.cpp")
+set_source_files_properties("main.hip.cpp" PROPERTIES LANGUAGE HIP)
+target_link_libraries(libtest)
